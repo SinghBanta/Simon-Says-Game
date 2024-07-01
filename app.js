@@ -7,14 +7,25 @@ let level = 0; //game not start hence level is 0.
 
 let h2 = document.querySelector("h2");
 
-document.addEventListener("keypress", function () {
+const startBtn = document.querySelector('.start-btn');
+
+startBtn.addEventListener("click", function () {
+  //  Click start button to start the game
   if (started == false) {
-    console.log("game started");
+    // console.log("game started");
+    startBtn.innerText = "Playing";
+    this.disabled = true;
     started = true;
 
     levelUp();
   }
 });
+
+document.addEventListener("keypress", function (event) {
+  //  Press any key to start the game on large device 
+  startBtn.click();
+}
+);
 
 function gameFlash(btn) {
   btn.classList.add("gameFlash"); //we add our flash class which have background color white.
@@ -40,7 +51,7 @@ function levelUp() {
   let randColor = btns[randIdx]; //here we choose random color random index ke through.
   let randBtn = document.querySelector(`.${randColor}`);
   gameSeq.push(randColor);
-  console.log(gameSeq);
+  // console.log(gameSeq);
   // console.log(randIdx);
   // console.log(randColor);
   // console.log(randBtn);
@@ -58,8 +69,10 @@ function checkAns(idx) {
       setTimeout(levelUp, 300);
     }
   } else {
-    h2.innerHTML = `Game Over! Your score was <b>${level}</b> <br> Press any key to start.`;
+    h2.innerHTML = `Game Over! Your score was <b>${level}</b>. <br> Play again.`;
     document.querySelector("body").style.backgroundColor = "red";
+    startBtn.disabled = false;
+    startBtn.innerText = "Start"
     setTimeout(function () {
       document.querySelector("body").style.backgroundColor = "white";
     }, 300);

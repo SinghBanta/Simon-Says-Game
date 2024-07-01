@@ -1,5 +1,6 @@
 body {
   text-align: center;
+  font: 1em sans-serif;
 }
 
 .btn {
@@ -8,6 +9,22 @@ body {
   border-radius: 13%;
   border: 6px solid black;
   margin: 20px;
+  user-select: none;
+}
+
+.start-btn {
+  margin-top: 20px;
+  height: 40px;
+  width: 100px;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.start-btn:hover {
+  background: #b3b8c2;
 }
 
 .btn-container {
@@ -39,6 +56,35 @@ body {
   background-color: green;
 }
 
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
+}
+
+h2 {
+  content: flex;
+  flex-wrap: wrap;
+}
+
+.large-device-info {
+  display: none;
+}
+
+/* Media Queries for various Screens */
+
+/* for small screens */
+@media (max-width: 640px) {
+  .btn {
+    height: 100px;
+    width: 120px;
+  }
+}
+
+/* for large screens */
+@media (min-width: 1024px) {
+  .large-device-info {
+    font-size: smaller;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
 }
